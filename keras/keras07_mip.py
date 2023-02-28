@@ -23,9 +23,9 @@ print(y.shape) #(10, )
 #2 모델구성
 model = Sequential()
 model.add(Dense(4, input_dim=2))
-model.add(Dense(7))
+model.add(Dense(6))
 model.add(Dense(8))
-model.add(Dense(4))
+model.add(Dense(6))
 model.add(Dense(1))
 
 #3 컴파일, 훈련

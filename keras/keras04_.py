@@ -24,4 +24,4 @@ loss = model.evaluate(x,y) #평가하다
 print('loss : ', loss)
 
 result = model.predict([6]) #예측하다
-print("4의 예측값 : ", result)
+print("6의 예측값 : ", result) # 결과

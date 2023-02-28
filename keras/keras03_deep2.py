@@ -1,5 +1,5 @@
 #1 데이터
-import numpy as np # import 가져오다, as 별칠
+import numpy as np # import 가져오다, as 별칭
 x = np.array([1,2,3]) # array 배열
 y = np.array([1,2,3])
 

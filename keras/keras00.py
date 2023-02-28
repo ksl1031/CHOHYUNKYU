@@ -19,8 +19,8 @@ model.compile(loss='mse', optimizer='adam')
 model.fit(x,y,epochs = 500, batch_size = 2)
 
 #4 평가, 예측
-loss = model.evaluate(x,y)
+loss = model.evaluate(x,y) #평가
 print("loss : ", loss)
-reslut = model.predict([5])
+reslut = model.predict([5]) #예측
 print("5의 예측값 : ", reslut)
 

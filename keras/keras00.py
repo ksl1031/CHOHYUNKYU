@@ -10,14 +10,15 @@ from tensorflow.keras.layers import Dense
 
 model = Sequential()
 model.add(Dense(2, input_dim = 1))
-model.add(Dense(5))
+model.add(Dense(3))
 model.add(Dense(9))
+model.add(Dense(7))
 model.add(Dense(6))
 model.add(Dense(1))
 
 #3 컴파일, 훈련
 model.compile(loss = "mse", optimizer = "adam")
-model.fit(x, y, epochs = 700)
+model.fit(x, y, epochs = 600)
 
 #4 평가, 예측
 loss = model.evaluate(x, y)
@@ -25,3 +26,7 @@ print("loss : ", loss)
 
 result = model.predict([9])
 print("9의 예측값 : ", result)
+
+#1 8.979793
+#2 8.995409
+#3 8.999825

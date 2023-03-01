@@ -21,7 +21,7 @@ model.fit(x,y,epochs=100) #훈련하다
 
 #4 평가, 예측
 loss = model.evaluate(x,y) #평가하다
-print('loss : ', loss)
+print("loss : ", loss)
 
 result = model.predict([6]) #예측하다
 print("6의 예측값 : ", result) # 결과

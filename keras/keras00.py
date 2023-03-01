@@ -11,21 +11,17 @@ from tensorflow.keras.layers import Dense
 model = Sequential()
 model.add(Dense(2, input_dim = 1))
 model.add(Dense(5))
-model.add(Dense(8))
-model.add(Dense(4))
+model.add(Dense(9))
+model.add(Dense(6))
 model.add(Dense(1))
 
 #3 컴파일, 훈련
 model.compile(loss = "mse", optimizer = "adam")
-model.fit(x, y, epochs = 600)
+model.fit(x, y, epochs = 700)
 
 #4 평가, 예측
-loss = model.evaluate(x , y)
+loss = model.evaluate(x, y)
 print("loss : ", loss)
 
-result = model.predict([8])
-print("8의 예측값 : ", result)
-
-#1 7.9492216
-#2 7.957466
-#3 7.9993896
+result = model.predict([9])
+print("9의 예측값 : ", result)

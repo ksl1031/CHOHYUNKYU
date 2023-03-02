@@ -21,5 +21,5 @@ y_test = y[7:] # : 뒤에 숫자가 없으면 끝까지 계산
 print(y_test) #[3,2,1]
 # 훈련은 범위내에서 훈련을 시켜야함
 
-# print(x_train.shape, x_test.shape) #(7,)(3,)
-# print(y_train.shape, y_test.shape) #(7,)(3,)
+# print(x_train.shape, x_test.shape) (7,)(3,)
+# print(y_train.shape, y_test.shape) (7,)(3,)

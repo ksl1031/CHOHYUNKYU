@@ -14,7 +14,7 @@ x = np.array(
     [8, 1.5],
     [9, 1.6],
     [10, 1.4]]
-)
+) # (10,2)
 y = np.array([11,12,13,14,15,16,17,18,19,20])
 
 print(x.shape) #(10, 2) -> 2개의 특성을 가진 10개의 데이터
@@ -30,7 +30,7 @@ model.add(Dense(1))
 
 #3 컴파일, 훈련
 model.compile(loss='mse', optimizer='adam')
-model.fit(x,y,epochs=30, batch_size=5)
+model.fit(x,y,epochs=30, batch_size=3)
 
 #4평가, 예측
 loss = model.evaluate(x,y)

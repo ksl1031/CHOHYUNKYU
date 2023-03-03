@@ -1,6 +1,6 @@
 from sklearn.datasets import fetch_california_housing
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense
+from tensorflow.keras.layers import Dense, LeakyReLU
 from sklearn.model_selection import train_test_split
 import numpy as np
 # [실습]
@@ -19,11 +19,11 @@ print(datasets.feature_names)
 
 #2 모델 구성
 model = Sequential()
-model.add(Dense(15, input_dim = 8))
-model.add(Dense(16))
-model.add(Dense(20))
-model.add(Dense(15))
-model.add(Dense(8))
+model.add(Dense(20, input_dim = 8, activation = 'sigmoid'))
+model.add(Dense(30,activation=LeakyReLU()))
+model.add(Dense(50,activation=LeakyReLU()))
+model.add(Dense(60,activation=LeakyReLU()))
+model.add(Dense(80,activation=LeakyReLU()))
 model.add(Dense(1))
 
 #3 컴파일, 훈련

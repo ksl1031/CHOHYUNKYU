@@ -22,18 +22,19 @@ model.compile(loss = 'mse', optimizer = 'adam')
 model.fit(x_train, y_train, epochs = 300, batch_size = 1)
 
 #4 평가, 예측
-<<<<<<< HEAD
 loss = model.predict(x_test, y_test)
 print("loss = ", loss)
 
 y_predict = model.predict(x)
 
 from sklearn.metrics import r2_score
+
 r2 = r2_score(x, y)
 print("r2스코어 : ", r2)
-=======
+
 loss = model.evaluate(x_test, y_test)
 print("loss : ", loss)
+
 result = model.predict([11])
 print("11의 예측값 : ", result)
->>>>>>> d4cb017553b7dfdc7d2a7e48bb81c92015ab42d8
+

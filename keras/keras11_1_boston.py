@@ -9,7 +9,7 @@ datasets = load_boston()
 x = datasets.data
 y = datasets.target
 
-x_train,x_test,y_train,y_test = train_test_split(x, y, train_size = 0.7, shuffle = True, random_state= 30)
+x_train,x_test,y_train,y_test = train_test_split(x, y, train_size = 0.9, shuffle = True, random_state= 300)
 
 # print(x)
 # print(y)
@@ -27,16 +27,16 @@ print(x.shape,y.shape) # (506, 13) (506,)
 
 #2 모델 구성
 model = Sequential()
-model.add(Dense(20, input_dim = 13, activation = 'sigmoid'))
+model.add(Dense(60, input_dim = 13, activation = 'sigmoid'))
 model.add(Dense(30,activation=LeakyReLU()))
-model.add(Dense(50,activation=LeakyReLU()))
+model.add(Dense(40,activation=LeakyReLU()))
 model.add(Dense(60,activation=LeakyReLU()))
-model.add(Dense(80,activation=LeakyReLU()))
+model.add(Dense(20,activation=LeakyReLU()))
 model.add(Dense(1))
 
 #3 컴파일, 훈련
 model.compile(loss = 'mse', optimizer = 'adam')
-model.fit(x_train,y_train, epochs = 600, batch_size = 100, verbose = 0)
+model.fit(x_train,y_train, epochs = 600, batch_size = 70, verbose = 0)
 
 #4 평가, 예측
 loss = model.evaluate(x_test, y_test)

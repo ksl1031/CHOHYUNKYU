@@ -1,7 +1,7 @@
+import numpy as np # 넘파이 위아래 상관없음
+import matplotlib.pyplot as plt # matplotlib : 그래프를 그릴 수 있는 라이브러리
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
-import numpy as np # 넘파이 위아래 상관없음
-
 from sklearn.model_selection import train_test_split
 
 #1 데이터

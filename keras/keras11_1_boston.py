@@ -46,4 +46,8 @@ y_predict = model.predict(x_test)
 
 from sklearn.metrics import r2_score
 r2 = r2_score(y_test, y_predict) 
+<<<<<<< HEAD
 print("r2스코어 : ",r2)
+=======
+print("r2스코어 : ",r2)
+>>>>>>> 377b3780bdbe0794f2a4d06e31736c5125d5fd6c

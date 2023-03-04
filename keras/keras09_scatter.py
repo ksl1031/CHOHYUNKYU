@@ -27,8 +27,6 @@ loss = model.evaluate(x_test, y_test)
 print("loss : ", loss)
 
 y_predict = model.predict(x)
-# 시각화
-import matplotlib.pyplot as plt
 
 plt.scatter(x, y) # scatter : 데이터를 점으로 시각화 해주는 함수
 plt.plot(x, y_predict, color = 'red') # plot : 데이터를 선으로 시각화 해주는 함수

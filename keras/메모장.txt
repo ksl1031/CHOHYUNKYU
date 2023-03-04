@@ -1,0 +1,39 @@
+import numpy as np
+import matplotlib.pyplot as plt : 그래프를 그릴 수 있는 라이브러리
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import r2_score
+
+
+import : 불러오다
+from : 가져오다
+as : 별칭
+array : 배열
+transpose : 행렬 반전
+Sequential :
+Dense : 입출력 연결 레이어
+add : 모델에 대한 호출
+input_dim : 입력 데이터의 개수를 지정하는 매개변수
+input layer : 신경망의 입력층
+hidden layer : 신경망의 입력층과 출력층 사이에 위치한 층
+output layer : 신경망의 출력층
+compile : 학습
+fit : 모델을 훈련을 시키는 함수 최적화된 가중치(weight)를 찾는다.
+loss : 최소의
+optiimzer : 최적의
+mse : 평균 제곱 오차 = 모델의 예측값과 실제 값 사이의 차이를 평가하는 손실 함수
+adam : 최적화 알고리즘
+epochs : 데이터를 몇번 반복해서 훈련할지 결정한다.
+batch : 일괄
+batch_size : 데이터를 쪼개서 작업함 default값은 32
+shape : 데이터의 행렬을 반환
+evaluate : 모델의 성능을 평가
+result : 결과
+predict : 모델의 입력 데이터를 예측
+train : 모델 학습 과정
+test : 모델의 최종적으로 평가
+scatter : 데이터를 점으로 시각화 해주는 함수
+plot : 데이터를 선으로 시각화 해주는 함수
+show : 화면에 그림을 출력 해주는 함수
+

@@ -11,8 +11,8 @@ y = np.array([11,12,13,14,15,16,17,18,19,20])
 
 # x = x.transpose() # 행렬 반전, 전치행렬
 x = x.T
-print(x.shape) #(10, 2) -> 2개의 특성을 가진 10개의 데이터  shape : 배열의 형태를 알아본다.
-print(y.shape) #(10, )  shape : 배열의 형태를 알아본다.
+print(x.shape) #(10, 2) -> 2개의 특성을 가진 10개의 데이터  shape : 몇행 몇열인지 반환
+print(y.shape) #(10, )  shape : 몇행 몇열인지 반환
 
 
 

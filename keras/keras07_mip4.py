@@ -11,7 +11,7 @@ print(x.shape) # (10, 3)  shape : 배열의 형태를 알아본다.
 
 y = np.array(([1,2,3,4,5,6,7,8,9,10])) # (1, 10)
 y = y.T # (10, 1)
-print(y.shape) # shape : 배열의 형태를 알아본다.
+print(y.shape) # shape : 몇행 몇열인지 반환
 
 #2 모델구성
 model = Sequential()

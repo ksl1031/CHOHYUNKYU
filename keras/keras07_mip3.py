@@ -13,8 +13,8 @@ x = x.T # 행렬 반전
 
 # 예측값 [[10, 1.4, 0]]
 
-print(x.shape) # shape : 배열의 형태를 알아본다.
-print(y.shape) # shape : 배열의 형태를 알아본다.
+print(x.shape) # shape : 몇행 몇열인지 반환
+print(y.shape) # shape : 몇행 몇열인지 반환
 
 # 모델 구성
 model = Sequential()

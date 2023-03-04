@@ -9,6 +9,7 @@
 #9 실습 시작
 
 import numpy as np # 넘파이 위아래 상관없음
+from sklearn.metrics import r2_score
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from sklearn.model_selection import train_test_split
@@ -44,6 +45,5 @@ print("loss : ", loss)
 
 y_predict = model.predict(x_test)
 
-from sklearn.metrics import r2_score
 r2 = r2_score(y_test, y_predict) 
 print("r2스코어 : ",r2)

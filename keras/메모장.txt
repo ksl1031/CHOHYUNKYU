@@ -39,4 +39,6 @@ scatter : 데이터를 점으로 시각화 해주는 함수
 plot : 데이터를 선으로 시각화 해주는 함수
 show : 화면에 그림을 출력 해주는 함수
 r2_score : 결정 계수 0과 1 사이의 값으로 나타냄 1에 가까울수록 실제데이터와 일치
-
+LeakyReLU : 활성화 함수
+datasets.feature_names : 데이터셋의 특성
+datasets.DESCR : 데이터셋의 정보

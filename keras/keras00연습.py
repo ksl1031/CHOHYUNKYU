@@ -1,5 +1,5 @@
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, LeakyReLU
+from tensorflow.keras.layers import Dense,LeakyReLU
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score
 from sklearn.datasets import load_boston
@@ -11,22 +11,19 @@ y = datasets.target
 
 x_train,x_test,y_train,y_test = train_test_split(x, y, train_size = 0.9, shuffle = True, random_state = 20)
 
-print(datasets.feature_names)
-print(datasets.DESCR)
-
 #2 모델 구성
 model = Sequential()
-model.add(Dense(6, input_dim = 13, activation = 'sigmoid'))
-model.add(Dense(15, activation = LeakyReLU()))
+model.add(Dense(5, input_dim = 13, activation = 'sigmoid'))
+model.add(Dense(50, activation = LeakyReLU()))
+model.add(Dense(60, activation = LeakyReLU()))
+model.add(Dense(55, activation = LeakyReLU()))
 model.add(Dense(20, activation = LeakyReLU()))
-model.add(Dense(30, activation = LeakyReLU()))
-model.add(Dense(120, activation = LeakyReLU()))
-model.add(Dense(15, activation = LeakyReLU()))
+model.add(Dense(6, activation = LeakyReLU()))
 model.add(Dense(1))
 
 #3 컴파일, 훈련
 model.compile(loss = 'mse', optimizer = 'adam')
-model.fit(x_train, y_train, epochs = 10, batch_size = 5)
+model.fit(x_train, y_train, epochs = 300, batch_size = 5)
 
 #4 평가, 예측
 loss = model.evaluate(x_test, y_test)

@@ -13,20 +13,20 @@ x_train,x_test,y_train,y_test = train_test_split(x,y,train_size=0.7,shuffle=True
 
 #2 모델 구성
 model = Sequential()
-model.add(Dense(25, input_dim = 13, activation = 'sigmoid'))
-model.add(Dense(52, activation = LeakyReLU()))
-model.add(Dense(51, activation = LeakyReLU()))
-model.add(Dense(50, activation = LeakyReLU()))
-model.add(Dense(55, activation = LeakyReLU()))
-model.add(Dense(58, activation = LeakyReLU()))
+model.add(Dense(5, input_dim = 13, activation = 'sigmoid'))
+model.add(Dense(20, activation = LeakyReLU()))
+model.add(Dense(25, activation = LeakyReLU()))
+model.add(Dense(21, activation = LeakyReLU()))
+model.add(Dense(30, activation = LeakyReLU()))
+model.add(Dense(5, activation = LeakyReLU()))
 model.add(Dense(1))
 
 #3 컴파일, 훈련
 model.compile(loss = 'mse', optimizer = 'adam')
-model.fit(x_train, y_train, epochs = 300, batch_size = 50)
+model.fit(x_train,y_train,epochs = 300, batch_size = 5)
 
 #4 평가, 예측
-loss = model.evaluate(x_test, y_test)
+loss = model.evaluate(x_test,y_test)
 print("loss : ", loss)
 
 y_predict = model.predict(x_test)

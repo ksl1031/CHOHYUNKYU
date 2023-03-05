@@ -1,4 +1,4 @@
-from sklearn.datasets import load_boston # load_boston 을 가져온다.
+from sklearn.datasets import load_boston # 보스턴 주택 가격 데이터셋을 가져온다.
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, LeakyReLU
 from sklearn.model_selection import train_test_split

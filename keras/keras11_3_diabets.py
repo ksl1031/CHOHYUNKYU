@@ -2,7 +2,6 @@ from sklearn.datasets import load_diabetes
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, LeakyReLU
 from sklearn.model_selection import train_test_split
-import numpy as np
 
 #1 데이터
 datasets = load_diabetes()

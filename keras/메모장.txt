@@ -1,11 +1,12 @@
 import numpy as np
 import matplotlib.pyplot as plt : 그래프를 그릴 수 있는 라이브러리
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense
+from tensorflow.keras.layers import Dense, LeakyReLU
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score
 
 
+행무시 열우선, 열=컬럼=특성=피쳐
 import : 불러오다
 from : 가져오다
 as : 별칭

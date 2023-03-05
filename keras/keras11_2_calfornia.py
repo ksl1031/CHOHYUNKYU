@@ -10,10 +10,10 @@ datasets = fetch_california_housing()
 x = datasets.data
 y = datasets.target
 
-x_train,x_test,y_train,y_test = train_test_split(x, y, train_size = 0.7, shuffle = True, random_state=  100)
+x_train,x_test,y_train,y_test = train_test_split(x, y, train_size = 0.7, shuffle = True, random_state=  20)
 
-print(datasets.feature_names)
-# ['MedInc', 'HouseAge', 'AveRooms', 'AveBedrms', 'Population', 'AveOccup', 'Latitude', 'Longitude']
+print(datasets.feature_names) # ['MedInc', 'HouseAge', 'AveRooms', 'AveBedrms', 'Population', 'AveOccup', 'Latitude', 'Longitude']
+print(datasets.DESCR)
 
 
 #2 모델 구성
@@ -27,7 +27,7 @@ model.add(Dense(1))
 
 #3 컴파일, 훈련
 model.compile(loss = 'mse', optimizer = 'adam')
-model.fit(x_train,y_train, epochs = 10, batch_size = 40)
+model.fit(x_train,y_train, epochs = 50, batch_size = 200)
 
 #4 평가, 훈련
 loss = model.evaluate(x_test, y_test)
@@ -39,3 +39,5 @@ from sklearn.metrics import r2_score
 
 r2 = r2_score(y_test, y_predict)
 print("r2스코어 : ", r2)
+
+# r2스코어 : 0.597406860400812

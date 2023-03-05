@@ -15,7 +15,7 @@ x_train,x_test,y_train,y_test = train_test_split(x, y, train_size = 0.9, shuffle
 # print(x)
 # print(y)
 # print(datasets)
-print(datasets.feature_names)
+print(datasets.feature_names) # 데이터셋의 특성
 # ['CRIM' 'ZN' 'INDUS' 'CHAS' 'NOX' 'RM' 'AGE' 'DIS' 'RAD' 'TAX' 'PTRATIO' 'B' 'LSTAT']
 
 print(datasets.DESCR) # 데이터셋의 정보
@@ -48,3 +48,5 @@ y_predict = model.predict(x_test)
 r2 = r2_score(y_test, y_predict) 
 
 print("r2스코어 : ",r2)
+
+# r2스코어 : 0.8192106776575108

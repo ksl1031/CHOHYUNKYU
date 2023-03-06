@@ -37,10 +37,10 @@ model.add(Dense(1))
 
 #3 컴파일, 훈련
 model.compile(loss = 'mse', optimizer = 'adam')
-model.fit(x_train,y_train, epochs = 500, batch_size = 0)
+model.fit(x_train,y_train, epochs = 10, batch_size = 1, verbose = 0)
 
 #4 평가, 예측
-loss = model.evaluate(x_test, y_test)
+loss = model.evaluate(x_test, y_test, verbose = 0)
 print("loss : ", loss)
 
 y_predict = model.predict(x_test)
@@ -50,3 +50,10 @@ r2 = r2_score(y_test, y_predict)
 print("r2스코어 : ",r2)
 
 # r2스코어 : 0.8192106776575108
+
+# verbose
+# 0 = 아무것도 안나온다.
+# 1,auto = 다 보인다.
+# 2 = 프로그래스바만 없어짐
+# 3,4,5 = epochs만 나온다.
+# default값은 1

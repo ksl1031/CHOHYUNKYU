@@ -1,9 +1,10 @@
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt : 그래프를 그릴 수 있는 라이브러리
 from tensorflow.keras.models import Sequential : 시퀀셜 모델 불러오기
 from tensorflow.keras.layers import Dense, LeakyReLU : 댄스 레이어 불러오기,
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import r2_score
+from sklearn.metrics import r2_score, mean_squared_error
 
 warning : 경고, 작동은 한다.
 error : 작동 안함
@@ -43,3 +44,4 @@ r2_score : 결정 계수 0과 1 사이의 값으로 나타냄 1에 가까울수�
 LeakyReLU : 활성화 함수
 datasets.feature_names : 데이터셋의 특성
 datasets.DESCR : 데이터셋의 정보
+verbose : 0 = 아무것도 안나온다. 1,auto = 다 보인다. 2 = 프로그래스바만 없어짐 3,4,5 = epochs만 나온다.  default값은 1

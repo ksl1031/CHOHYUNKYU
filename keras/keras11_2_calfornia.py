@@ -1,4 +1,4 @@
-from sklearn.datasets import fetch_california_housing
+from sklearn.datasets import fetch_california_housing # 캘리포니아 주택 가격 데이터셋
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, LeakyReLU
 from sklearn.model_selection import train_test_split
@@ -10,11 +10,10 @@ datasets = fetch_california_housing()
 x = datasets.data
 y = datasets.target
 
-x_train,x_test,y_train,y_test = train_test_split(x, y, train_size = 0.7, shuffle = True, random_state=  20)
+x_train,x_test,y_train,y_test = train_test_split(x, y, train_size = 0.7, shuffle = True, random_state=  10)
 
 print(datasets.feature_names) # ['MedInc', 'HouseAge', 'AveRooms', 'AveBedrms', 'Population', 'AveOccup', 'Latitude', 'Longitude']
 print(datasets.DESCR)
-
 
 #2 모델 구성
 model = Sequential()

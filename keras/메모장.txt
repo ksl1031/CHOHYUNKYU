@@ -21,7 +21,7 @@ input_dim : 입력 데이터의 개수를 지정하는 매개변수
 input layer : 신경망의 입력층
 hidden layer : 신경망의 입력층과 출력층 사이에 위치한 층
 output layer : 신경망의 출력층
-compile : 학습
+compile : 기계어로 바꾼다.
 fit : 모델을 훈련을 시키는 함수 최적화된 가중치(weight)를 찾는다.
 loss : 최소의
 optiimzer : 최적의

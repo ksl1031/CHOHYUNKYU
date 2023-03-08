@@ -23,7 +23,7 @@ model.add(Dense(1))
 
 # #3 컴파일, 훈련
 model.compile(loss='mse', optimizer='adam')
-model.fit(x_train,y_train, epochs=100, batch_size=10, validation_split = 0.2)
+model.fit(x_train,y_train, epochs=100, batch_size=10, validation_split = 0.2) # split : 훈련 데이터 비율을 설정한 만큼 평가한다.
 
 #4 평가, 예측
 loss = model.evaluate(x_test,y_test)

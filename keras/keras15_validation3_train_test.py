@@ -10,6 +10,7 @@ y_train = np.array(range(1,17))
 # train_test_split 로만 짜르기
 # 10:3:3
 
+
 x_train,x_test,y_train,y_test = train_test_split(x_train, y_train, train_size=13/16,random_state=1, shuffle=True)
 print(x_train,y_train,x_test,y_test)
 x_train,x_val,y_train,y_val = train_test_split(x_train, y_train,train_size=10/13,random_state=1, shuffle=True)
@@ -17,7 +18,7 @@ print(x_train,y_train,x_val,y_val,y_test,y_test)
 
 
 
-'''
+
 #2 모델
 model = Sequential()
 model.add(Dense(5, activation="linear", input_dim =1))
@@ -30,7 +31,7 @@ model.add(Dense(1))
 
 # #3 컴파일, 훈련
 model.compile(loss='mse', optimizer='adam')
-model.fit(x_train,y_train, epochs=100, batch_size=10, validation_data = (x_val, y_val))
+model.fit(x_train,y_train, epochs=100, batch_size=10, validation_data = (x_val, y_val)) # data : 훈련 데이터를 일부 분리하여 평가한다.
 
 #4 평가, 예측
 loss = model.evaluate(x_test,y_test)
@@ -38,4 +39,3 @@ print("loss : ", loss)
 
 result = model.predict([17])
 print("17의 예측값 : ", result)
-'''

@@ -115,4 +115,4 @@ submission.to_csv(path_save + 'submit_0307_0223.csv')
 # test_csv = pd.read_csv(path + 'test.csv', index_col = 0)
 # train_csv = train_csv.dropna()
 # x = train_csv.drop(['count'], axis = 1)
-# y = train_csv['count']
+# y = train_csv['count']''

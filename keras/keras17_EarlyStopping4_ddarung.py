@@ -18,7 +18,7 @@ train_csv = train_csv.dropna()
 x = train_csv.drop(['count'], axis = 1)
 y = train_csv['count']
 
-x_train,x_test,y_train,y_test = train_test_split(x,y,train_size=0.7,
+x_train,x_test,y_train,y_test = train_test_split(x,y,train_size=0.9,
                                                  shuffle=True,
                                                  random_state=20,
                                                  )
@@ -26,10 +26,10 @@ x_train,x_test,y_train,y_test = train_test_split(x,y,train_size=0.7,
 #2 모델 구성
 model = Sequential()
 model.add(Dense(500, input_dim = 9))
-model.add(Dense(60))
-model.add(Dense(666))
-model.add(Dense(605))
-model.add(Dense(6))
+model.add(Dense(700,activation= 'linear'))
+model.add(Dense(66,activation= 'linear'))
+model.add(Dense(605,activation= 'relu'))
+model.add(Dense(7000,activation= 'relu'))
 model.add(Dense(1))
 
 #3 컴파일, 훈련
@@ -41,7 +41,7 @@ es = EarlyStopping(monitor = 'val_loss',
                    restore_best_weights=True,
                    )
 hist = model.fit(x_train,y_train,
-          epochs = 300,
+          epochs = 1000,
           batch_size = 50,
           validation_split=0.2,
           verbose=1,
@@ -65,15 +65,15 @@ y_submit = model.predict(test_csv)
 
 submission = pd.read_csv(path + 'submission.csv', index_col = 0)
 submission['count'] = y_submit
-submission.to_csv(path_save + 'submit_0308_4650.csv')
+submission.to_csv(path_save + 'submit_0310_1658.csv')
 
-plt.rcParams['font.family'] = 'Malgun Gothic'
-plt.figure(figsize = (9,6))
-plt.plot(hist.history['loss'], marker = '.', c = 'red', label = '로스')
-plt.plot(hist.history['val_loss'], marker = '.', c = 'blue', label = '발_로스')
-plt.title('보스턴')
-plt.xlabel('epochs')
-plt.ylabel('loss, val_loss')
-plt.legend()
-plt.grid()
-plt.show()
+# plt.rcParams['font.family'] = 'Malgun Gothic'
+# plt.figure(figsize = (9,6))
+# plt.plot(hist.history['loss'], marker = '.', c = 'red', label = '로스')
+# plt.plot(hist.history['val_loss'], marker = '.', c = 'blue', label = '발_로스')
+# plt.title('보스턴')
+# plt.xlabel('epochs')
+# plt.ylabel('loss, val_loss')
+# plt.legend()
+# plt.grid()
+# plt.show()

@@ -80,7 +80,7 @@ model.add(Dense(1))
 
 #3 컴파일, 훈련
 model.compile(loss = 'mae', optimizer = 'adam')
-model.fit(x_train, y_train, epochs = 200, batch_size = 120, verbose = 1)
+model.fit(x_train, y_train, epochs = 2000, batch_size = 140, verbose = 1)
 
 #4 평가, 예측
 loss = model.evaluate(x_test, y_test)
@@ -99,14 +99,14 @@ print("RMSE : ", rmse)
 #======================== submission.csv 를 만들어몹시다 ========================
 # print(test_csv.isnull().sum()) # 여기도 경측치가 있다.
 y_submit = model.predict(test_csv)
-print(y_submit)
+# print(y_submit)
 
 submission = pd.read_csv(path + 'submission.csv', index_col = 0)
-print(submission)
+# print(submission)
 submission['count'] = y_submit
-print(submission)
+# print(submission)
 
-submission.to_csv(path_save + 'submit_0307_0223.csv')
+submission.to_csv(path_save + 'submit_0310_1312.csv')
 
 
 # 데이터

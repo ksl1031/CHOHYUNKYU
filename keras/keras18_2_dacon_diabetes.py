@@ -42,7 +42,7 @@ model.add(Dense(8000,activation = 'relu'))
 model.add(Dense(9000,activation = 'relu'))
 model.add(Dense(8000,activation = 'relu'))
 model.add(Dense(7000,activation = 'relu'))
-model.add(Dense(60000,activation = 'relu'))
+model.add(Dense(10000,activation = 'relu'))
 model.add(Dense(1, activation = 'sigmoid'))
 
 #3 컴파일, 훈련

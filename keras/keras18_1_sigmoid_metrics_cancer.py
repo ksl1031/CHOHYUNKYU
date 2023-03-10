@@ -31,7 +31,7 @@ model.add(Dense(20, activation = 'linear'))
 model.add(Dense(50, activation = 'relu'))
 model.add(Dense(30, activation = 'relu'))
 model.add(Dense(50, activation = 'linear'))
-model.add(Dense(1, activation = 'sigmoid')) # sigmoid : 0 1
+model.add(Dense(1, activation = 'sigmoid')) # sigmoid : 0 ~ 1
 
 #3 컴파일, 훈련
 model.compile(loss= 'binary_crossentropy',

@@ -37,12 +37,6 @@ model.add(Dense(800,activation = 'relu'))
 model.add(Dense(900,activation = 'relu'))
 model.add(Dense(1000,activation = 'relu'))
 model.add(Dense(6000,activation = 'relu'))
-model.add(Dense(7000,activation = 'relu'))
-model.add(Dense(8000,activation = 'relu'))
-model.add(Dense(9000,activation = 'relu'))
-model.add(Dense(8000,activation = 'relu'))
-model.add(Dense(7000,activation = 'relu'))
-model.add(Dense(60000,activation = 'relu'))
 model.add(Dense(1, activation = 'sigmoid'))
 
 #3 컴파일, 훈련
@@ -81,4 +75,4 @@ y_submit = np.round(model.predict(test_csv))
 
 submission = pd.read_csv(path + 'sample_submission.csv', index_col=0)
 submission['Outcome'] = y_submit
-submission.to_csv(path_save + 'sample_submission_0309_1710.csv')
+submission.to_csv(path_save + 'sample_submission_0310_1244.csv')

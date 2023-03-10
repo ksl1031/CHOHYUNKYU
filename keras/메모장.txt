@@ -66,4 +66,9 @@ one hot : 없음
 loss : 이중 = binary_crossentropy, 다중 = categorical_crossentropy
 out layer : 이중 = sigmoid, 1, 다중 = softmax, y의 값(라벨,클래스)의 갯수만큼
 one hot : 이중 = 없음, 다중 = 있음
-
+데이콘  캐글 디아뱃 MinMaxScaler, StandardScaler, MaxAbsScaler, RobustScaler 주말에 메일로 보내기
+정규화 : normalization, 장점 = 과부하 X 성능,속도 좋아질수도 있다. 동일한 비율로 변경이 된다. 최대값으로 나눈다. 훈련(train) 데이터만 정규화한다.
+0 ~ 100, 80개 0 ~ 1
+80 ~ 110, 20개 0.8 ~ 1.1
+훈련(train) 데이터의 범위의 비율에 맞춰서 나머지 데이터도 똑같이 한다.
+train과 test 분리후 정규화를 한다.

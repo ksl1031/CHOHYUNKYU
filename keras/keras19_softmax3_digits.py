@@ -34,6 +34,9 @@ y = to_categorical(y)
 # print(y)
 print(y.shape)
 
+from sklearn.preprocessing import OneHotEncoder
+ohe = OneHotEncoder()
+
 
 #판다스에 갯더미, 사이킷런에 원핫인코더
 #=========================================================

@@ -73,7 +73,7 @@ plt.rcParams['font.family'] = 'Malgun Gothic'
 plt.figure(figsize = (9,6))
 plt.plot(hist.history['loss'], marker = '.', c = 'red', label = '로스')
 plt.plot(hist.history['val_loss'], marker = '.', c = 'blue', label = '발_로스')
-plt.title('보스턴')
+plt.title('')
 plt.xlabel('epochs')
 plt.ylabel('loss, val_loss')
 plt.legend()

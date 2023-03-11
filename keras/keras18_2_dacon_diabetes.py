@@ -32,20 +32,9 @@ x_train,x_test,y_train,y_test = train_test_split(x,y,
 model = Sequential()
 model.add(Dense(500,activation = 'relu',input_dim = 8))
 model.add(Dense(600,activation = 'relu'))
-model.add(Dense(700,activation = 'relu'))
-model.add(Dense(800,activation = 'relu'))
-model.add(Dense(900,activation = 'relu'))
-model.add(Dense(1000,activation = 'relu'))
-model.add(Dense(6000,activation = 'relu'))
-<<<<<<< HEAD
 model.add(Dense(7000,activation = 'relu'))
-model.add(Dense(8000,activation = 'relu'))
-model.add(Dense(9000,activation = 'relu'))
-model.add(Dense(8000,activation = 'relu'))
-model.add(Dense(7000,activation = 'relu'))
-model.add(Dense(10000,activation = 'relu'))
-=======
->>>>>>> b1c62c7924a9aed68538356d32e2ca2524a7aa58
+model.add(Dense(80,activation = 'relu'))
+model.add(Dense(40,activation = 'relu'))
 model.add(Dense(1, activation = 'sigmoid'))
 
 #3 컴파일, 훈련
@@ -61,7 +50,7 @@ es = EarlyStopping(monitor='val_loss',
                    )
 model.fit(x_train,y_train,
           epochs = 1000,
-          batch_size = 500,
+          batch_size = 400,
           validation_split=0.2,
           verbose = 1,
           callbacks=[es],
@@ -84,4 +73,4 @@ y_submit = np.round(model.predict(test_csv))
 
 submission = pd.read_csv(path + 'sample_submission.csv', index_col=0)
 submission['Outcome'] = y_submit
-submission.to_csv(path_save + 'sample_submission_0310_1244.csv')
+submission.to_csv(path_save + 'sample_submission_0310_2245.csv')

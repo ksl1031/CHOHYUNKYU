@@ -42,7 +42,7 @@ es = EarlyStopping(monitor='val_loss',
                    restore_best_weights=True,
                    )
 hist = model.fit(x_train, y_train,
-          epochs = 300,
+          epochs = 100,
           batch_size = 50,
           validation_split = 0.2,
           verbose = 1,
@@ -67,7 +67,7 @@ y_submit = model.predict(test_csv)
 
 submission = pd.read_csv(path + 'sampleSubmission.csv', index_col=0)
 submission['count'] = y_submit
-submission.to_csv(path_save + 'submit_0308_1711.csv')
+submission.to_csv(path_save + 'submit_0310_2245.csv')
 
 plt.rcParams['font.family'] = 'Malgun Gothic'
 plt.figure(figsize = (9,6))
@@ -79,10 +79,3 @@ plt.ylabel('loss, val_loss')
 plt.legend()
 plt.grid()
 plt.show()
-
-
-
-
-
-
-

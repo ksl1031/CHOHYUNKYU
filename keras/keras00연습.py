@@ -17,31 +17,31 @@ x = train_csv.drop(['Outcome'], axis = 1)
 y = train_csv['Outcome']
 
 x_train,x_test,y_train,y_test = train_test_split(x,y,
-                                                 train_size=0.7,
+                                                 train_size=0.75,
                                                  shuffle=True,
-                                                 random_state=1212)
+                                                 random_state=3434)
 
 #2 모델
 model = Sequential()
 model.add(Dense(6, input_dim = 8))
 model.add(Dense(7, activation = 'relu'))
+model.add(Dense(70, activation = 'relu'))
 model.add(Dense(7, activation = 'relu'))
-model.add(Dense(7, activation = 'relu'))
-model.add(Dense(7, activation = 'relu'))
+model.add(Dense(7, activation = 'linear'))
 model.add(Dense(1, activation = 'sigmoid'))
 
 #3 컴파일, 훈련
 model.compile(loss = 'binary_crossentropy',
               optimizer = 'adam',
               metrics= 'accuracy')
-es = EarlyStopping(monitor='accuracy',
-                   patience=30,
-                   mode='max',
+es = EarlyStopping(monitor= 'val_loss',
+                   patience=70,
+                   mode='min',
                    verbose=1,
                    restore_best_weights=True)
 model.fit(x_train,y_train,
           epochs=1000,
-          batch_size =5,
+          batch_size =2,
           validation_split=0.3,
           verbose = 1,
           callbacks=[es])

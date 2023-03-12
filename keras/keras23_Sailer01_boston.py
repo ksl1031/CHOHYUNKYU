@@ -29,6 +29,7 @@ x_train,x_test,y_train,y_test = train_test_split(x,y,
 # scaler = StandardScaler()
 # scaler = MaxAbsScaler()
 # scaler = RobustScaler()
+# 하나를 선택해서 사용할수 있다.
 scaler.fit(x_train)
 x_train = scaler.transform(x_train)
 x_test = scaler.transform(x_test) # train 에 변한 비율에 맞춰진다.

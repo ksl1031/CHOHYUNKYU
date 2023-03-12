@@ -51,12 +51,12 @@ model.fit(x_train,y_train,
 result = model.evaluate(x_test, y_test)
 print("result : ", result)
 
-y_predict = np.round(model.predict(x_test)) # x_test의 예측값을 반올림 해준다.
+y_predict = np.round(model.predict(x_test)) # np.round:반올림 / 예측값을 반올림해서 0,1의 값이 나올 수 있도록해줌 (0.5까지는 0으로, 0.6부터는 1로)
 
 acc = accuracy_score(y_test,y_predict)
 print("acc : ", acc)
 
-y_submit = np.round(model.predict(test_csv))
+y_submit = np.round(model.predict(test_csv)) # np.round:반올림 / 예측값을 반올림해서 0,1의 값이 나올 수 있도록해줌 (0.5까지는 0으로, 0.6부터는 1로)
 
 submission = pd.read_csv(path + 'sample_submission.csv', index_col=0)
 submission['Outcome'] = y_submit

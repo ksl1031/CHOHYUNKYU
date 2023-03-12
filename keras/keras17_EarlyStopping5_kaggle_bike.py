@@ -20,29 +20,29 @@ x = train_csv.drop(['count','casual','registered'], axis = 1)
 y = train_csv['count']
 
 x_train,x_test,y_train,y_test = train_test_split(x,y,
-                                                 train_size=0.6,
+                                                 train_size=0.8,
                                                  shuffle=True,
-                                                 random_state=1234)
-
+                                                 random_state=131)
+print(x_train)
 #2 모델 구성
 model = Sequential()
-model.add(Dense(6, input_dim = 8))
-model.add(Dense(7))
-model.add(Dense(7))
-model.add(Dense(7))
-model.add(Dense(7))
+model.add(Dense(60, input_dim = 8))
+model.add(Dense(80))
+model.add(Dense(50))
+model.add(Dense(90))
+model.add(Dense(70,activation = 'relu'))
 model.add(Dense(1))
 
 #3 컴파일,훈련
 model.compile(loss = 'mse', optimizer = 'adam')
 es = EarlyStopping(monitor='val_loss',
-                   patience=20,
+                   patience=30,
                    mode = 'min',
                    verbose = 1,
                    restore_best_weights=True,
                    )
 hist = model.fit(x_train, y_train,
-          epochs = 100,
+          epochs = 1000,
           batch_size = 50,
           validation_split = 0.2,
           verbose = 1,
@@ -67,13 +67,13 @@ y_submit = model.predict(test_csv)
 
 submission = pd.read_csv(path + 'sampleSubmission.csv', index_col=0)
 submission['count'] = y_submit
-submission.to_csv(path_save + 'submit_0310_2245.csv')
+submission.to_csv(path_save + 'submit_0312_1307.csv')
 
 plt.rcParams['font.family'] = 'Malgun Gothic'
 plt.figure(figsize = (9,6))
 plt.plot(hist.history['loss'], marker = '.', c = 'red', label = '로스')
 plt.plot(hist.history['val_loss'], marker = '.', c = 'blue', label = '발_로스')
-plt.title('')
+plt.title('캐글 바이크')
 plt.xlabel('epochs')
 plt.ylabel('loss, val_loss')
 plt.legend()

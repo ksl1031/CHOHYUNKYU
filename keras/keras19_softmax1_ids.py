@@ -35,7 +35,7 @@ print(y.shape)
 # print(y.shape)
 
 
-#판다스에 갯더미, 사이킷런에 원핫인코더
+#판다스, 겟더미, 사이킷런에 원핫인코더
 #=========================================================
 x_train,x_test,y_train,y_test = train_test_split(x,y,
                                                  shuffle=True,

@@ -40,8 +40,8 @@ print(y.shape)
 x_train,x_test,y_train,y_test = train_test_split(x,y,
                                                  shuffle=True,
                                                 #  random_state=333,
-                                                 train_size=0.5, # 데이터의 비율을 일정하게 조절한다.
-                                                 stratify=y
+                                                 train_size=0.5,
+                                                 stratify=y, # 데이터의 비율을 일정하게 조절한다.
                                                  )
 print(y_train) # [1 0 2 0 1 1 0 0 2 0 1 1 1 2 0]
 print(np.unique(y_train, return_counts=True)) # (array([0, 1, 2]), array([5, 5, 5], dtype=int64))

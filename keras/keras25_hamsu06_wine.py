@@ -1,0 +1,84 @@
+from sklearn.datasets import load_wine
+import numpy as np
+import pandas as pd
+from tensorflow.python.keras.models import Sequential, Model
+from tensorflow.python.keras.layers import Dense, Input
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.metrics import accuracy_score
+
+
+# 1. 데이터
+datasets = load_wine()
+x = datasets.data
+y = datasets.target
+
+#  ['alcohol', 'malic_acid', 'ash', 'alcalinity_of_ash', 'magnesium', 'total_phenols', 
+#   'flavanoids', 'nonflavanoid_phenols', 'proanthocyanins', 'color_intensity', 'hue', 'od280/od315_of_diluted_wines', 'proline']
+# print(datasets.DESCR)
+# print(x.shape, y.shape)       # (178, 13), (178,)
+
+"""print(np.unique(y))
+from keras.utils import to_categorical
+y = to_categorical(y)
+print(y.shape)
+"""
+
+y = pd.get_dummies(y)
+print(y.shape)
+y = np.array(y)
+"""
+from sklearn.preprocessing import OneHotEncoder
+ohe = OneHotEncoder()
+y = oh.fit_transform(y)
+print(y.shape)"""
+
+x_train, x_test, y_train, y_test = train_test_split(x, y,
+                                                    train_size=0.7,
+                                                    random_state=123,
+                                                    )
+
+scaler = MinMaxScaler()
+scaler.fit(x_train)
+x_train = scaler.transform(x_train)
+x_test = scaler.transform(x_test)
+
+
+# 2. 모델구성
+# model = Sequential()
+# model.add(Dense(32, input_dim=13))
+# model.add(Dense(32))
+# model.add(Dense(32))
+# model.add(Dense(32))
+# model.add(Dense(32))
+# model.add(Dense(3, activation='softmax'))
+
+input1 = Input(shape = (13,))
+danse1 = Dense(32)(input1)
+danse2 = Dense(32)(danse1)
+danse3 = Dense(32)(danse2)
+danse4 = Dense(32)(danse3)
+danse5 = Dense(32)(danse4)
+output1 = Dense(3, activation='softmax')(danse5)
+model = Model(inputs = input1, outputs = output1)
+
+# 3. 컴파일, 훈련
+model.compile(loss='categorical_crossentropy',
+              optimizer='adam',
+              metrics=['acc'],
+              )
+model.fit(x_train, y_train,
+          epochs=100,
+          batch_size=10,
+          verbose=1,
+          validation_split=0.2,
+          )
+
+# 4. 평가, 예측
+result = model.evaluate(x_test, y_test)
+print('result : ', result)
+
+y_predict = np.round(model.predict(x_test))
+
+acc = accuracy_score(y_test, y_predict)
+print('acc : ', acc)

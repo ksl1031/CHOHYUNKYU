@@ -22,7 +22,7 @@ x = train_csv.drop(['Outcome'], axis = 1)
 y = train_csv['Outcome']
 
 x_train,x_test,y_train,y_test = train_test_split(x,y,
-                                                 test_size=0.2,
+                                                 test_size=0.5,
                                                  shuffle=True,
                                                  random_state=3421,
                                                  )
@@ -30,13 +30,13 @@ x_train,x_test,y_train,y_test = train_test_split(x,y,
 
 #2 모델 구성
 model = Sequential()
-model.add(Dense(500,activation = 'relu',input_dim = 8))
+model.add(Dense(5,activation = 'relu',input_dim = 8))
 model.add(Dense(600,activation = 'relu'))
 model.add(Dense(700,activation = 'relu'))
-model.add(Dense(800,activation = 'relu'))
-model.add(Dense(900,activation = 'relu'))
-model.add(Dense(1000,activation = 'relu'))
-model.add(Dense(6000,activation = 'relu'))
+model.add(Dense(8,activation = 'linear'))
+model.add(Dense(9,activation = 'linear'))
+model.add(Dense(100,activation = 'linear'))
+model.add(Dense(600,activation = 'linear'))
 model.add(Dense(1, activation = 'sigmoid'))
 
 #3 컴파일, 훈련
@@ -52,8 +52,8 @@ es = EarlyStopping(monitor='val_loss',
                    )
 model.fit(x_train,y_train,
           epochs = 1000,
-          batch_size = 500,
-          validation_split=0.2,
+          batch_size = 20,
+          validation_split=0.4,
           verbose = 1,
           callbacks=[es],
           )

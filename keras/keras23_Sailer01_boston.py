@@ -18,14 +18,14 @@ print(x)
 # scaler = MinMaxScaler()
 # scaler.fit(x)
 # x = scaler.transform(x)
-# print(np.min(x), np.max(x)) # 0.0 711.
+# print(np.min(x), np.max(x)) # 0.0 1.0
 
 x_train,x_test,y_train,y_test = train_test_split(x,y,
                                                  train_size=0.8,
                                                  random_state=333,
                                                  )
 
-# scaler = MinMaxScaler()
+scaler = MinMaxScaler()
 # scaler = StandardScaler()
 # scaler = MaxAbsScaler()
 # scaler = RobustScaler()
@@ -33,12 +33,12 @@ scaler.fit(x_train)
 x_train = scaler.transform(x_train)
 x_test = scaler.transform(x_test) # train 에 변한 비율에 맞춰진다.
 
-print(np.min(x_train), np.max(x_train)) # 0.0 711.0
+print(np.min(x_train), np.max(x_train)) # 0.0 1.0000000000000002
 scaler = MinMaxScaler()
 scaler.fit(x_train)
 x_train = scaler.transform(x_train)
 x_test = scaler.transform(x_test)
-print(np.min(x_test), np.max(x_test)) # 0.0 711.
+print(np.min(x_test), np.max(x_test)) # -0.00557837618540494 1.1478180091225065
 
 
 '''#2 모델 구성

@@ -36,9 +36,9 @@ model.add(Dense(1, activation = 'sigmoid')) # sigmoid : 0 ~ 1
 #3 컴파일, 훈련
 model.compile(loss= 'binary_crossentropy',
               optimizer = 'adam',
-              metrics=['accuracy','mse'], # 모델의 성능을 모니터링 해준다.
+              metrics=['accuracy','mse'], # 모델의 성능을 모니터링 해준다. acc,mse,mean_squared_error 보여줄수있다. list : 2개 이상을 보여줄수있다.
               )
-es = EarlyStopping(monitor='val_accuracy',
+es = EarlyStopping(monitor='val_accuracy', # 이진분류 loss : 'binary_crossentropy'
                    patience=20,
                    mode='min',
                    verbose=1,
@@ -56,7 +56,7 @@ hist : model.fit(x_train,y_train,
 result = model.evaluate(x_test,y_test) # loss 값, metrics 값 출력
 print("result : ", result)
 
-y_predict = np.round(model.predict(x_test))
+y_predict = np.round(model.predict(x_test)) # np.round:반올림 / 예측값을 반올림해서 0,1의 값이 나올 수 있도록해줌 (0.5까지는 0으로, 0.6부터는 1로)
 print("===================================")
 print(y_test[:5])
 print(y_predict[:5])

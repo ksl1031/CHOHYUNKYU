@@ -10,11 +10,14 @@ from sklearn.metrics import accuracy_score
 datasets = fetch_covtype()
 x = datasets.data
 y = datasets.target
+print(y)
+print(y.shape)
 
 from sklearn.preprocessing import OneHotEncoder
 ohe = OneHotEncoder()
-y = y.reshape(-1, 1)
+y = y.reshape(-1, 1) # 2차원 배열로 변환시킨다.
 y = ohe.fit_transform(y).toarray()
+print(y.shape)
 
 # from tensorflow.keras.utils import to_categorical
 # y = to_categorical(y)
@@ -64,10 +67,10 @@ print("acc : ", result[1]) # result의 1번째 값
 
 print("걸린 시간은 : ",(end_time - start_time)) # 숫자를 반올림 해준다.
 
-'''y_pred = model.predict(x_test)
+y_pred = model.predict(x_test)
 
 y_test_acc = np.argmax(y_test, axis = 1) # 각 행에 있는 열끼리 비교
 y_pred = np.argmax(y_pred, axis = 1)
 
 acc = accuracy_score(y_test_acc,y_pred)
-print('accuracy_score : ', acc)'''
+print('accuracy_score : ', acc)

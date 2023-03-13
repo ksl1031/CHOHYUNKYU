@@ -1,10 +1,14 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt : 그래프를 그릴 수 있는 라이브러리
-from tensorflow.keras.models import Sequential : 시퀀셜 모델 불러오기
-from tensorflow.keras.layers import Dense, LeakyReLU : 댄스 레이어 불러오기,
+import time
+from tensorflow.python.keras.models import Sequential : 시퀀셜 모델 불러오기
+from tensorflow.python.keras.layers import Dense, LeakyReLU : 댄스 레이어 불러오기,
+from tensorflow.python.keras.utils import to_categorical : 
+from tensorflow.python.keras.callbacks import EarlyStopping : 
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import r2_score, mean_squared_error
+from sklearn.metrics import r2_score, mean_squared_error, accuracy_score
+from sklearn.preprocessing import OneHotEncoder
 
 warning : 경고, 작동은 한다.
 error : 작동 안함

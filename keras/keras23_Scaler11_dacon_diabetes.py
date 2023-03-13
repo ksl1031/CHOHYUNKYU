@@ -4,8 +4,8 @@ from tensorflow.python.keras.models import Sequential
 from tensorflow.python.keras.layers import Dense
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
-from sklearn.preprocessing import MinMaxScaler
 from tensorflow.python.keras.callbacks import EarlyStopping
+from sklearn.preprocessing import MinMaxScaler, StandardScaler, MaxAbsScaler, RobustScaler
 
 #1 데이터
 path = './_data/_dacon_diabetes/'
@@ -22,44 +22,44 @@ x = train_csv.drop(['Outcome'], axis = 1)
 y = train_csv['Outcome']
 
 x_train,x_test,y_train,y_test = train_test_split(x,y,
-                                                 train_size=0.8,
+                                                 train_size=0.95,
                                                  shuffle=True,
-                                                 random_state=3333,
+                                                 random_state=300,
                                                  stratify=y)
 
-scaler = MinMaxScaler()
+# scaler = MinMaxScaler() # 0 ~ 1
+scaler = StandardScaler() # 0, 1
+# scaler = MaxAbsScaler() # -1, 1
+# scaler = RobustScaler() # 25% ~ 75%
 scaler.fit(x_train)
 x_train = scaler.transform(x_train)
 x_test = scaler.transform(x_test)
+test_csv = scaler.transform(test_csv)
 
 #2 모델 구성
 model = Sequential()
-model.add(Dense(500,activation = 'relu',input_dim = 8))
-model.add(Dense(600,activation = 'relu'))
-model.add(Dense(700,activation = 'relu'))
-model.add(Dense(800,activation = 'linear'))
-model.add(Dense(900,activation = 'linear'))
-model.add(Dense(100,activation = 'linear'))
+model.add(Dense(500,activation = 'linear',input_dim = 8))
 model.add(Dense(600,activation = 'linear'))
 model.add(Dense(700,activation = 'linear'))
 model.add(Dense(800,activation = 'linear'))
-model.add(Dense(400,activation = 'linear'))
+model.add(Dense(900,activation = 'relu'))
+model.add(Dense(500,activation = 'relu'))
+model.add(Dense(600,activation = 'relu'))
 model.add(Dense(1, activation = 'sigmoid'))
 
 #3 컴파일, 훈련
 model.compile(loss = 'binary_crossentropy',
               optimizer = 'adam',
-              metrics= 'accuracy',
-              )
+              metrics= 'accuracy',)
 es = EarlyStopping(monitor='val_loss',
-                   patience=40,
+                   patience=20,
                    mode='min',
                    verbose=1,
-                   restore_best_weights=True,)
+                   restore_best_weights=True)
 model.fit(x_train,y_train,
           epochs = 1000,
-          batch_size = 20,
-          validation_split=0.3,
+          batch_size = 30,
+          validation_split=0.4,
           verbose = 1,
           callbacks=[es])
 
@@ -76,4 +76,4 @@ y_submit = np.round(model.predict(test_csv)) # np.round:반올림 / 예측값을
 
 submission = pd.read_csv(path + 'sample_submission.csv', index_col=0)
 submission['Outcome'] = y_submit
-submission.to_csv(path_save + 'sample_submission_0312_1245.csv')
+submission.to_csv(path_save + 'sample_submission_0313_1226.csv')

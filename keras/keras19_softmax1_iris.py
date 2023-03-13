@@ -29,10 +29,10 @@ print(type(y))
 y = np.array(y)
 print(y.shape)
 
-from tensorflow.keras.utils import to_categorical
-y = to_categorical(y)
-# print(y)
-print(y.shape)
+# from tensorflow.keras.utils import to_categorical
+# y = to_categorical(y)
+# # print(y)
+# print(y.shape)
 
 
 #판다스, 겟더미, 사이킷런에 원핫인코더

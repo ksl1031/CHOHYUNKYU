@@ -76,3 +76,23 @@ one hot : 이중 = 없음, 다중 = 있음
 80 ~ 110, 20개 0.8 ~ 1.1
 훈련(train) 데이터의 범위의 비율에 맞춰서 나머지 데이터도 똑같이 한다.
 train과 test 분리후 정규화를 한다.
+
+from keras.utils import to_categorical
+y = to_categorical(y)
+print(y.shape)
+
+from sklearn.preprocessing import OneHotEncoder
+ohe = OneHotEncoder()
+y = ohe.fit_transform(y)
+print(y.shape)
+
+print(y.shape)
+y = pd.get_dummies(y)
+print(type(y))
+y = np.array(y)
+print(y.shape)
+
+scaler = MinMaxScaler()
+scaler = StandardScaler()
+scaler = MaxAbsScaler()
+scaler = RobustScaler()

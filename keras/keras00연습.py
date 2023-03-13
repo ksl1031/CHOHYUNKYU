@@ -47,8 +47,8 @@ model.fit(x_train,y_train,
           callbacks=[es])
 
 #4 평가, 예측
-loss = model.evaluate(x_test,y_test)
-print("loss : ", loss)
+result = model.evaluate(x_test,y_test)
+print("loss : ", result)
 
 y_predict = np.round(model.predict(x_test))
 

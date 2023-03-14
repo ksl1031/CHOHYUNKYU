@@ -40,7 +40,7 @@ model.add(Dense(70,activation = 'relu'))
 model.add(Dense(1))
 
 #3 컴파일,훈련
-model.compile(loss = 'mse', optimizer = 'adam')
+model.compile(loss = 'binary_crossentropy', optimizer = 'adam')
 es = EarlyStopping(monitor='val_loss',
                    patience=30,
                    mode = 'min',

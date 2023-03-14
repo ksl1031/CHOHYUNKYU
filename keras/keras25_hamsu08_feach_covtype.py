@@ -56,13 +56,13 @@ x_test = scaler.transform(x_test)
 # model.add(Dense(40, activation='relu'))
 # model.add(Dense(7, activation='softmax')) # y의 라벨 갯수만큼 아웃레이어 출력
 
-input1 = Input(shape = (64,))
+input1 = Input(shape = (54,))
 danse1 = Dense(64, activation='relu')(input1)
 danse2 = Dense(64, activation='relu')(danse1)
 danse3 = Dense(64, activation='relu')(danse2)
 danse4 = Dense(64, activation='relu')(danse3)
 danse5 = Dense(64, activation='relu')(danse4)
-output1 = Dense(10, activation='softmax')(danse5)
+output1 = Dense(7, activation='softmax')(danse5)
 model = Model(inputs = input1, outputs = output1)
 
 #3 컴파일, 훈련

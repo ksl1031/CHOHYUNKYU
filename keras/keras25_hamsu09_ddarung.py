@@ -49,7 +49,8 @@ output1 = Dense(1, activation='softmax')(danse5)
 model = Model(inputs = input1, outputs = output1)
 
 #3 컴파일, 훈련
-model.compile(loss = 'mse', optimizer = 'adam')
+model.compile(loss = 'categorical_crossentropy',
+              optimizer = 'adam')
 es = EarlyStopping(monitor = 'val_loss',
                    patience = 20,
                    mode = 'min',
@@ -81,4 +82,4 @@ y_submit = model.predict(test_csv)
 
 submission = pd.read_csv(path + 'submission.csv', index_col = 0)
 submission['count'] = y_submit
-submission.to_csv(path_save + 'submit_0310_1658.csv')
+submission.to_csv(path_save + 'submit_0314_1439.csv')

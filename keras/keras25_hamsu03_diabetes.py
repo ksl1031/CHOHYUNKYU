@@ -32,7 +32,7 @@ x_test = scaler.transform(x_test)
 # model.add(Dense(7))
 # model.add(Dense(1))
 
-input1 = Input(shape = (8,))
+input1 = Input(shape = (10,))
 danse1 = Dense(6)(input1)
 danse2 = Dense(7)(danse1)
 danse3 = Dense(7)(danse2)

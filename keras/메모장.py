@@ -56,7 +56,7 @@ isnull :  결측치 여부확인
 sum : 결측치 값 갯수 확인 출력
 dropna : 결측치 제거
 drop : 지정한 컬럼을 제거한 결과를 반환한다.
-axis : 열방향으로 제거
+axis : 0,1 행열방향으로 제거
 def : 함수를 정의할때 사용 ():안에 입력값을 받아서
 x = train,test,val,predict
 y = train,test,val, X

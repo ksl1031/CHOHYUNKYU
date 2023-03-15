@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import datetime
 from tensorflow.python.keras.models import Sequential, Model
-from tensorflow.python.keras.layers import Dense, Input, Dropout
+from tensorflow.python.keras.layers import Dense,Input,Dropout
 from tensorflow.python.keras.callbacks import EarlyStopping
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
@@ -49,7 +49,12 @@ dense3 = Dense(200)(dense2)
 dense4 = Dense(200)(dense3)
 drop2 = Dropout(0.2)(dense4)
 output1 = Dense(7)(drop2)
-model = Model(inputs = input1, outputs = output1)
+
+scaler = StandardScaler()
+scaler = RobustScaler()
+x_train = scaler.fit_transform(x_train)
+x_test = scaler.transform(x_test)
+test_csv = scaler.transform(test_csv.drop('type', axis=1))
 
 #3 컴파일, 훈련
 model.compile(loss = 'categorical_crossentropy',
@@ -58,12 +63,18 @@ model.compile(loss = 'categorical_crossentropy',
 es = EarlyStopping(monitor='val_loss',
                    patience=50,
                    mode ='min',
+
+                   patience=30,
+                   mode='min',
+
                    verbose=1,
                    restore_best_weights=True)
 model.fit(x_train,y_train,
           epochs=1000,
           batch_size=60,
           validation_split=0.6,
+          batch_size=20,
+          validation_split=0.2,
           verbose=1,
           callbacks=[es])
 

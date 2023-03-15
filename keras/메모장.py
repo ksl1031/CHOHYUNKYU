@@ -96,3 +96,36 @@ scaler = MinMaxScaler()
 scaler = StandardScaler()
 scaler = MaxAbsScaler()
 scaler = RobustScaler()
+============================================================
+1.1 경로, 가져오기
+1.2 확인사항 5가지 : shape, columns, info(), describe(), type
+1.3 결측지 제거
+print(train_csv.isnull().sum()) 결측치 확인
+train_csv = trina_csv.dropna() 결측치 제거
+print(train_csv.isnull().sum()) 결측치 재확인
+1.4 라벨인코더
+le = LabelEncoder()
+le.fit(train_csv['type'])
+aaa = le.transform(train_csv['type'])
+train_csv['type'] = aaa
+test_csv['type'] = le.transform(test_csv['type'])
+print(train_csv)
+print(test_csv)
+print(train_csv.shape)
+print(test_csv.shape)
+1.5 x, y 분리
+x = train_csv.drop(['quality'], axis=1)
+y = train_csv['quality']
+1.6 원핫인코딩
+y = pd.get_dummies(y)
+y = np.array(y)
+1.8 scaler
+==============================================================
+print(train_csv.shape) 데이터프레임의 행과 열의 개수를 출력합니다
+print(train_csv.columns) 데이터프레임의 열 이름을 출력합니다.
+print(train_csv.info()) 데이터프레임의 정보를 출력합니다. 
+      각 열의 데이터 타입과 누락된 데이터가 있는지 여부 등을 확인할 수 있습니다.
+print(train_csv.describe()) 데이터프레임의 요약 통계 정보를 출력합니다.
+            수치형 열의 평균, 표준편차, 최소값, 최대값 등을 확인할 수 있습니다.
+print(type(train_csv)) 변수의 데이터 타입을 출력합니다.
+

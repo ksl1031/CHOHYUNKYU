@@ -1,61 +1,46 @@
 import numpy as np
 import pandas as pd
 from tensorflow.python.keras.models import Sequential, Model
-from tensorflow.python.keras.layers import Dense, Input, Dropout
+from tensorflow.python.keras.layers import Dense ,Input, Dropout
 from tensorflow.python.keras.callbacks import EarlyStopping
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
-from sklearn.preprocessing import MinMaxScaler,StandardScaler,MaxAbsScaler,RobustScaler,LabelEncoder
-from keras.utils import to_categorical
+from sklearn.preprocessing import LabelEncoder, MinMaxScaler
 
 #1 데이터
-path = './_data/_dacon_wine/'
+path = './_data/_dacon_wine/'# '.' : 현재 폴더
 path_save  = './_save/dacon_wine/'
 
 train_csv = pd.read_csv(path + 'train.csv', index_col = 0)
 test_csv = pd.read_csv(path + 'test.csv', index_col = 0)
-print(train_csv)
+print(train_csv) # [5497 rows x 13 columns]
+print(train_csv.shape) # (5497, 13)
+print(test_csv) # [1000 rows x 12 columns]
+print(test_csv.shape) # (1000, 12)
 
 le = LabelEncoder()
-le.fit(train_csv['type'])
+le.fit(train_csv['type']) # type에 화이트,레드를 0,1로 변환시켜준다.
 aaa = le.transform(train_csv['type'])
+print(aaa)
+print(type(aaa)) # <class 'numpy.ndarray'>
+print(aaa.shape) # (5497,)
+# print(np.unique(aaa, return_counts=True)) # (array([0, 1]), array([1338, 4159], dtype=int64))
 train_csv['type'] = aaa
 test_csv['type'] = le.transform(test_csv['type'])
+print(le.transform(['red','white'])) # [0 1]
+print(le.transform(['white','red'])) # [0 1]
 
 x = train_csv.drop(['quality'], axis=1)
 y = train_csv['quality']
-print(x.info())
-print(np.unique(y))     # [3 4 5 6 7 8 9]
-# 1. 사이킷런 원핫인코더
-# from sklearn.preprocessing import OneHotEncoder
-# ohe = OneHotEncoder()
-# y = train_csv['quality'].values
-# y = y.reshape(-1, 1)
-# y = ohe.fit_transform(y).toarray()
 
-# 2. to_categorical
-# y = to_categorical(y)
-# y = y[: , 3:]
-# print(y.shape)
-# print(y)
-
-#3. get_dummies
 y = pd.get_dummies(y)
-print(type(y))
-print(y)
 y = np.array(y)
-print(type(y))
-print(y)
-
 x_train,x_test,y_train,y_test = train_test_split(x,y,
                                                  train_size=0.85,
                                                  shuffle=True,
                                                  random_state=5555)
 
 scaler = MinMaxScaler()
-# scaler = StandardScaler()
-# scaler = MaxAbsScaler()
-# scaler = RobustScaler()
 x_train_csv = scaler.fit_transform(x_train)
 x_test_csv = scaler.transform(x_test)
 test_csv = scaler.transform(test_csv)
@@ -83,7 +68,7 @@ es = EarlyStopping(monitor='val_loss',
                    restore_best_weights=True)
 model.fit(x_train,y_train,
           epochs=10,
-          batch_size=20,
+          batch_size=200,
           validation_split=0.2,
           verbose=1,
           callbacks=[es])
@@ -99,11 +84,22 @@ y_predict = np.argmax(y_predict, axis = 1)
 
 acc = accuracy_score(y_test_acc,y_predict)
 print('acc : ', acc)
+print(test_csv.shape)
 
 y_submit = model.predict(test_csv)
+print(y_submit.shape)
+print(y_submit)
+
 y_submit = np.argmax(y_submit, axis = 1)
 y_submit += 3
 
 submission = pd.read_csv(path + 'sample_submission.csv',index_col=0)
+print(y_submit.shape)
+print(y_submit)
+
+import datetime
+date = datetime.datetime.now()
+date = date.strftime("%m%d_%H%M")
+
 submission['quality'] = y_submit
-submission.to_csv(path_save + 'submission_0315_1049.csv')
+submission.to_csv(path_save + 'sample_submission_' + date + '.csv')
